@@ -1,0 +1,201 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Sinthanai Foundation" [ref=e5] [cursor=pointer]:
+          - /url: /en
+          - img "Sinthanai Foundation" [ref=e7]
+        - generic [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /en
+          - link "About" [ref=e10] [cursor=pointer]:
+            - /url: /en/about
+          - link "Programs" [ref=e11] [cursor=pointer]:
+            - /url: /en/programs
+            - text: Programs
+          - link "Gallery" [ref=e13] [cursor=pointer]:
+            - /url: /en/gallery
+          - link "Events" [ref=e14] [cursor=pointer]:
+            - /url: /en/events
+          - link "Volunteer" [ref=e15] [cursor=pointer]:
+            - /url: /en/volunteer
+          - link "Contact" [ref=e16] [cursor=pointer]:
+            - /url: /en/contact
+        - generic [ref=e17]:
+          - button "Switch to தமிழ்" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+            - generic [ref=e22]: தமிழ்
+          - link "Donate" [ref=e23] [cursor=pointer]:
+            - /url: /en/donate
+            - text: Donate
+            - img [ref=e24]
+  - main [ref=e26]:
+    - generic [ref=e29]:
+      - generic [ref=e31]: What We Do
+      - heading "Our Programs" [level=1] [ref=e33]
+      - paragraph [ref=e35]: We offer diverse educational programs designed to equip individuals with the knowledge and skills they need to thrive.
+    - generic [ref=e38]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - img [ref=e44]
+          - generic [ref=e46]: "01"
+          - heading "Spoken English" [level=2] [ref=e47]
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Our Spoken English program provides interactive language classes for school leavers and community members. Students develop conversational skills, grammar foundations, and confidence in English communication, preparing them for higher education and employment opportunities.
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - img [ref=e53]
+              - generic [ref=e56]:
+                - paragraph [ref=e57]: Eligibility
+                - paragraph [ref=e58]: School leavers, community members aged 16+
+            - generic [ref=e59]:
+              - img [ref=e61]
+              - generic [ref=e63]:
+                - paragraph [ref=e64]: Schedule
+                - paragraph [ref=e65]: Weekdays, Morning & Evening batches
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - img [ref=e71]
+          - generic [ref=e73]: "02"
+          - heading "programs_section.it" [level=2] [ref=e74]
+        - generic [ref=e75]:
+          - paragraph [ref=e76]: Digital literacy training covering computer fundamentals, internet skills, office applications, and basic programming. Equips participants with essential skills for the modern workforce.
+          - generic [ref=e77]:
+            - generic [ref=e78]:
+              - img [ref=e80]
+              - generic [ref=e83]:
+                - paragraph [ref=e84]: Eligibility
+                - paragraph [ref=e85]: Open to all community members
+            - generic [ref=e86]:
+              - img [ref=e88]
+              - generic [ref=e90]:
+                - paragraph [ref=e91]: Schedule
+                - paragraph [ref=e92]: Weekends and select weekday evenings
+      - generic [ref=e95]:
+        - generic [ref=e96]:
+          - img [ref=e98]
+          - generic [ref=e101]: "03"
+          - heading "Philosophy & Critical Thinking" [level=2] [ref=e102]
+        - generic [ref=e103]:
+          - paragraph [ref=e104]: Explore philosophical thinking through guided discussions, readings, and contemplation. Programs celebrate International Philosophy Day annually and develop critical thinking capabilities.
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - img [ref=e108]
+              - generic [ref=e111]:
+                - paragraph [ref=e112]: Eligibility
+                - paragraph [ref=e113]: Open to all interested individuals
+            - generic [ref=e114]:
+              - img [ref=e116]
+              - generic [ref=e118]:
+                - paragraph [ref=e119]: Schedule
+                - paragraph [ref=e120]: Weekly sessions, Special events on Philosophy Day
+      - generic [ref=e123]:
+        - generic [ref=e124]:
+          - img [ref=e126]
+          - generic [ref=e128]: "04"
+          - heading "Food for Thought" [level=2] [ref=e129]
+        - generic [ref=e130]:
+          - paragraph [ref=e131]: A holistic wellness program combining nutrition education with intellectual development. Participants learn about healthy eating, mindfulness, and the connection between physical and mental well-being.
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - img [ref=e135]
+              - generic [ref=e138]:
+                - paragraph [ref=e139]: Eligibility
+                - paragraph [ref=e140]: Families and individuals in the community
+            - generic [ref=e141]:
+              - img [ref=e143]
+              - generic [ref=e145]:
+                - paragraph [ref=e146]: Schedule
+                - paragraph [ref=e147]: Monthly workshops and ongoing support
+      - generic [ref=e150]:
+        - generic [ref=e151]:
+          - img [ref=e153]
+          - generic [ref=e155]: "05"
+          - heading "programs_section.online_english" [level=2] [ref=e156]
+        - generic [ref=e157]:
+          - paragraph [ref=e158]: Global volunteer-led English classes connecting Sri Lankan learners with teachers worldwide via online platforms. An innovative approach to language learning that builds cross-cultural understanding.
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - img [ref=e162]
+              - generic [ref=e165]:
+                - paragraph [ref=e166]: Eligibility
+                - paragraph [ref=e167]: Intermediate English learners
+            - generic [ref=e168]:
+              - img [ref=e170]
+              - generic [ref=e172]:
+                - paragraph [ref=e173]: Schedule
+                - paragraph [ref=e174]: Flexible, based on volunteer availability
+  - contentinfo [ref=e175]:
+    - generic [ref=e178]:
+      - generic [ref=e179]:
+        - link "Sinthanai Foundation" [ref=e180] [cursor=pointer]:
+          - /url: /en
+          - img "Sinthanai Foundation" [ref=e182]
+        - paragraph [ref=e183]: A registered charity dedicated to empowering communities through education in Sri Lanka's hill country.
+        - generic [ref=e184]:
+          - link "Facebook" [ref=e185] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e186]
+          - link "Twitter / X" [ref=e188] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e189]
+          - link "Instagram" [ref=e191] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e192]
+          - link "YouTube" [ref=e194] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e195]
+          - link "LinkedIn" [ref=e197] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e198]
+      - generic [ref=e200]:
+        - heading "Quick Links" [level=3] [ref=e201]
+        - list [ref=e202]:
+          - listitem [ref=e203]:
+            - link "About" [ref=e204] [cursor=pointer]:
+              - /url: /en/about
+              - text: About
+          - listitem [ref=e206]:
+            - link "Programs" [ref=e207] [cursor=pointer]:
+              - /url: /en/programs
+              - text: Programs
+          - listitem [ref=e209]:
+            - link "Gallery" [ref=e210] [cursor=pointer]:
+              - /url: /en/gallery
+              - text: Gallery
+          - listitem [ref=e212]:
+            - link "Events" [ref=e213] [cursor=pointer]:
+              - /url: /en/events
+              - text: Events
+          - listitem [ref=e215]:
+            - link "Donate" [ref=e216] [cursor=pointer]:
+              - /url: /en/donate
+              - text: Donate
+          - listitem [ref=e218]:
+            - link "Volunteer" [ref=e219] [cursor=pointer]:
+              - /url: /en/volunteer
+              - text: Volunteer
+      - generic [ref=e221]:
+        - heading "Contact Us" [level=3] [ref=e222]
+        - list [ref=e223]:
+          - listitem [ref=e224]:
+            - generic [ref=e225]:
+              - img [ref=e227]
+              - generic [ref=e229]: Kotagala, Hatton, Sri Lanka
+          - listitem [ref=e230]:
+            - link "info@sinthanai.org" [ref=e231] [cursor=pointer]:
+              - /url: mailto:info@sinthanai.org
+              - img [ref=e233]
+              - generic [ref=e236]: info@sinthanai.org
+      - generic [ref=e237]:
+        - heading "Newsletter" [level=3] [ref=e238]
+        - paragraph [ref=e239]: Stay updated with our latest news and events.
+        - generic [ref=e241]:
+          - textbox "Your email" [ref=e242]
+          - button [ref=e243] [cursor=pointer]:
+            - img [ref=e244]
+    - generic [ref=e247]:
+      - paragraph [ref=e248]: © 2026 Sinthanai Foundation. All rights reserved.
+      - generic [ref=e249]:
+        - generic [ref=e250]: "UK Registered Charity: 1184062"
+        - generic [ref=e253]: "Sri Lanka Registration: GA 3459"

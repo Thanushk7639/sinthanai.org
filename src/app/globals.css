@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Force blue gradient on entire page — overrides Tailwind preflight white */
+html, body {
+  background: linear-gradient(160deg, #0D2B4E 0%, #1E86C8 60%, #4FAEE0 100%) !important;
+  background-attachment: fixed !important;
+  min-height: 100% !important;
+  color: #ffffff !important;
+}
+
+:root {
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Primary Palette — Blue Gradient Theme */
+  --color-ink: #0D2B4E;
+  --color-ink-light: #1A3F6F;
+  --color-red: #1E86C8;
+  --color-red-dark: #1570AA;
+  --color-teal: #1E86C8;
+  --color-teal-light: #4FAEE0;
+
+  /* Surface Colors */
+  --color-bg: transparent;
+  --color-surface: rgba(255,255,255,0.10);
+  --color-surface-2: rgba(255,255,255,0.15);
+  --color-border: rgba(255,255,255,0.20);
+  --color-border-dark: rgba(255,255,255,0.35);
+
+  /* Text Colors */
+  --color-text: #FFFFFF;
+  --color-text-secondary: rgba(255,255,255,0.80);
+  --color-text-muted: rgba(255,255,255,0.55);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    background: linear-gradient(160deg, #0D2B4E 0%, #1E86C8 60%, #4FAEE0 100%);
+    min-height: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background: transparent;
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    min-height: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background-color: #1E86C844;
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  /* === BUTTONS === */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer;
+    background-color: rgba(255,255,255,0.20);
+    border: 1.5px solid rgba(255,255,255,0.40);
+    color: #fff;
+    letter-spacing: 0.01em;
+    backdrop-filter: blur(4px);
+  }
+  .btn-primary:hover {
+    background-color: rgba(255,255,255,0.30);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -4px rgba(0,0,0,0.25);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer border-2;
+    border-color: rgba(255,255,255,0.50);
+    color: #fff;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .btn-red {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer;
+    background-color: #1E86C8;
+    color: #fff;
+    letter-spacing: 0.01em;
+  }
+  .btn-red:hover {
+    background-color: #1570AA;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -4px rgba(30, 134, 200, 0.5);
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-full transition-all duration-200 cursor-pointer;
+    background-color: #fff;
+    color: #0D2B4E;
+  }
+  .btn-white:hover {
+    background-color: rgba(255,255,255,0.90);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -4px rgba(0,0,0,0.20);
+  }
+
+  /* === CARDS === */
+  .card {
+    @apply rounded-2xl overflow-hidden transition-all duration-300;
+    background-color: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.20);
+    backdrop-filter: blur(8px);
+  }
+  .card:hover {
+    border-color: rgba(255,255,255,0.40);
+    box-shadow: 0 16px 48px -8px rgba(0,0,0,0.25);
+    transform: translateY(-3px);
+  }
+
+  .card-dark {
+    @apply rounded-2xl overflow-hidden transition-all duration-300;
+    background-color: rgba(13,43,78,0.50);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+  }
+  .card-dark:hover {
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-3px);
+  }
+
+  /* === INPUTS === */
+  .input-field {
+    @apply w-full px-4 py-3.5 rounded-xl transition-all duration-200 text-sm;
+    background-color: rgba(255,255,255,0.10);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: #fff;
+  }
+  .input-field:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.60);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.10);
+  }
+  .input-field::placeholder { color: rgba(255,255,255,0.45); }
+
+  /* === BADGES === */
+  .badge {
+    @apply inline-flex items-center px-3.5 py-1 text-xs font-semibold rounded-full tracking-wide uppercase;
+    background-color: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.90);
+    border: 1px solid rgba(255,255,255,0.25);
+    font-family: var(--font-body);
+    letter-spacing: 0.06em;
+  }
+  .badge-red {
+    @apply inline-flex items-center px-3.5 py-1 text-xs font-semibold rounded-full tracking-wide uppercase;
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+  .badge-teal {
+    @apply inline-flex items-center px-3.5 py-1 text-xs font-semibold rounded-full tracking-wide uppercase;
+    background-color: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* === SECTION HEADING === */
+  .section-tag {
+    @apply inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full;
+    background-color: rgba(255,255,255,0.20);
+    border: 1px solid rgba(255,255,255,0.30);
+    color: white;
+  }
+
+  /* === DIVIDER LINE === */
+  .divider {
+    @apply w-12 h-1 rounded-full;
+    background-color: rgba(255,255,255,0.50);
+  }
+
+  /* === PAGE HERO === */
+  .page-hero {
+    @apply relative py-24 md:py-32 overflow-hidden;
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: var(--font-heading);
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .text-h1 {
+    font-family: var(--font-heading);
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+    letter-spacing: -0.025em;
+  }
+
+  .text-h2 {
+    font-family: var(--font-heading);
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+    letter-spacing: -0.02em;
+  }
+
+  .text-h3 {
+    font-family: var(--font-heading);
+    @apply text-xl md:text-2xl font-bold;
+    letter-spacing: -0.015em;
+  }
+
+  .text-body-lg {
+    @apply text-lg leading-relaxed;
+    color: var(--color-text-secondary);
+  }
+
+  .text-body {
+    @apply text-base leading-relaxed;
+    color: var(--color-text-secondary);
+  }
+
+  .text-ink { color: #fff; }
+  .text-red { color: #4FAEE0; }
+  .text-teal { color: #4FAEE0; }
+  .text-muted { color: rgba(255,255,255,0.55); }
+
+  .bg-ink { background-color: #0D2B4E; }
+  .bg-red { background-color: #1E86C8; }
+  .bg-teal { background-color: #1E86C8; }
+  .bg-surface { background-color: rgba(255,255,255,0.10); }
+  .bg-surface-2 { background-color: rgba(255,255,255,0.15); }
+
+  .border-default { border-color: rgba(255,255,255,0.20); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background-color: rgba(13,43,78,0.40); }
+::-webkit-scrollbar-thumb { background-color: rgba(79,174,224,0.60); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgba(79,174,224,0.90); }

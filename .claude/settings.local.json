@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:sinthanai.org)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --no-turbopack)",
+      "Bash(printf 'N\\\\nN\\\\n')",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(pkill -f \"next dev\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(pkill -f \"next start\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:61827)",
+      "Bash(grep -n \"bg-brand-ink pt-16\" src/app/\\\\[locale\\\\]/*/page.tsx)"
+    ]
+  }
+}

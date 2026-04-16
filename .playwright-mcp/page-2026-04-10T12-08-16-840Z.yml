@@ -1,0 +1,315 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Sinthanai Foundation" [ref=e5] [cursor=pointer]:
+          - /url: /en
+          - img "Sinthanai Foundation" [ref=e7]
+        - generic [ref=e8]:
+          - link "Home" [ref=e9] [cursor=pointer]:
+            - /url: /en
+            - text: Home
+          - link "About" [ref=e11] [cursor=pointer]:
+            - /url: /en/about
+          - link "Programs" [ref=e12] [cursor=pointer]:
+            - /url: /en/programs
+          - link "Gallery" [ref=e13] [cursor=pointer]:
+            - /url: /en/gallery
+          - link "Events" [ref=e14] [cursor=pointer]:
+            - /url: /en/events
+          - link "Volunteer" [ref=e15] [cursor=pointer]:
+            - /url: /en/volunteer
+          - link "Contact" [ref=e16] [cursor=pointer]:
+            - /url: /en/contact
+        - generic [ref=e17]:
+          - button "Switch to தமிழ்" [ref=e19] [cursor=pointer]:
+            - img [ref=e20]
+            - generic [ref=e22]: தமிழ்
+          - link "Donate" [ref=e23] [cursor=pointer]:
+            - /url: /en/donate
+            - text: Donate
+            - img [ref=e24]
+  - main [ref=e26]:
+    - generic [ref=e27]:
+      - paragraph [ref=e30]: 500+ students empowered across Kotagala, Sri Lanka — Join our mission today
+      - generic [ref=e32]:
+        - generic [ref=e34]: The Centre for Expansion of the Mind
+        - heading "EMPOWERING COMMUNITIES THROUGH EDUCATION" [level=1] [ref=e35]
+        - paragraph [ref=e36]: Empowering communities through education, digital skills, and critical thinking in Sri Lanka's hill country.
+        - generic [ref=e37]:
+          - link "Our Programs" [ref=e38] [cursor=pointer]:
+            - /url: /en/programs
+            - text: Our Programs
+            - img [ref=e39]
+          - link "Donate Now" [ref=e41] [cursor=pointer]:
+            - /url: /en/donate
+            - text: Donate Now
+            - img [ref=e42]
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - img [ref=e51]
+        - generic [ref=e55]:
+          - generic [ref=e56]: 500+
+          - generic [ref=e57]: Students Empowered
+      - generic [ref=e58]:
+        - img [ref=e60]
+        - generic [ref=e63]:
+          - generic [ref=e64]: 10+
+          - generic [ref=e65]: Years of Impact
+      - generic [ref=e66]:
+        - img [ref=e68]
+        - generic [ref=e70]:
+          - generic [ref=e71]: "8"
+          - generic [ref=e72]: Active Programs
+      - generic [ref=e73]:
+        - img [ref=e75]
+        - generic [ref=e78]:
+          - generic [ref=e79]: 50+
+          - generic [ref=e80]: Global Volunteers
+    - generic [ref=e84]:
+      - generic [ref=e86]: Who We Are
+      - heading "The Centre for Expansion of the Mind" [level=2] [ref=e88]
+      - paragraph [ref=e90]: Founded in Kotagala, Sri Lanka's picturesque hill country, Sinthanai Foundation operates at the grassroots level to deliver language, skills, and intellectual development programs. We believe every individual deserves access to quality education regardless of their background.
+      - generic [ref=e91]:
+        - generic [ref=e93]:
+          - img [ref=e95]
+          - generic [ref=e98]:
+            - heading "Our Mission" [level=3] [ref=e99]
+            - paragraph [ref=e100]: To build an intellectually wealthy society by providing accessible education and skill development programs that transcend racial, religious, and social boundaries.
+        - generic [ref=e102]:
+          - img [ref=e104]
+          - generic [ref=e107]:
+            - heading "Our Vision" [level=3] [ref=e108]
+            - paragraph [ref=e109]: A world where every individual has the opportunity to expand their mind and reach their full potential through education.
+      - link "Read Our Story" [ref=e111] [cursor=pointer]:
+        - /url: /en/about
+        - text: Read Our Story
+        - img [ref=e112]
+    - generic [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - generic [ref=e119]: What We Do
+          - heading "Our Programs" [level=2] [ref=e121]
+        - paragraph [ref=e123]: We offer diverse educational programs designed to equip individuals with the knowledge and skills they need to thrive.
+      - generic [ref=e124]:
+        - generic [ref=e126]:
+          - generic [ref=e127]:
+            - img [ref=e129]
+            - generic [ref=e131]: "01"
+          - heading "Spoken English" [level=3] [ref=e132]
+          - paragraph [ref=e133]: Interactive English language classes for school leavers and community members preparing for higher education and employment.
+          - generic [ref=e134]:
+            - generic [ref=e135]: Learn more
+            - img [ref=e136]
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - img [ref=e142]
+            - generic [ref=e144]: "02"
+          - heading "IT & Digital Skills" [level=3] [ref=e145]
+          - paragraph [ref=e146]: Computer literacy and digital skills training to prepare individuals for the modern workforce.
+          - generic [ref=e147]:
+            - generic [ref=e148]: Learn more
+            - img [ref=e149]
+        - generic [ref=e152]:
+          - generic [ref=e153]:
+            - img [ref=e155]
+            - generic [ref=e158]: "03"
+          - heading "Philosophy & Critical Thinking" [level=3] [ref=e159]
+          - paragraph [ref=e160]: Programs exploring philosophical thinking to develop intellectual capabilities and expand the mind.
+          - generic [ref=e161]:
+            - generic [ref=e162]: Learn more
+            - img [ref=e163]
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - img [ref=e169]
+            - generic [ref=e171]: "04"
+          - heading "Food for Thought" [level=3] [ref=e172]
+          - paragraph [ref=e173]: Wellness and nutrition programs that nourish both body and mind for holistic development.
+          - generic [ref=e174]:
+            - generic [ref=e175]: Learn more
+            - img [ref=e176]
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - img [ref=e182]
+            - generic [ref=e184]: "05"
+          - heading "Interactive Online English" [level=3] [ref=e185]
+          - paragraph [ref=e186]: Global volunteer-led English classes connecting learners with teachers worldwide via online platforms.
+          - generic [ref=e187]:
+            - generic [ref=e188]: Learn more
+            - img [ref=e189]
+        - link "View All Programs Explore all our programs" [ref=e192] [cursor=pointer]:
+          - /url: /en/programs
+          - generic [ref=e193]:
+            - img [ref=e195]
+            - heading "View All Programs" [level=3] [ref=e197]
+            - paragraph [ref=e198]: Explore all our programs
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]: Impact Stories
+        - heading "Voices of Change" [level=2] [ref=e203]
+      - generic [ref=e204]:
+        - generic [ref=e205]:
+          - generic [ref=e206]:
+            - img [ref=e207]
+            - img [ref=e209]
+            - img [ref=e211]
+            - img [ref=e213]
+            - img [ref=e215]
+          - blockquote [ref=e218]: “Sinthanai Foundation transformed my life. The English program gave me the confidence to pursue higher education and achieve my dreams.”
+          - generic [ref=e219]:
+            - generic [ref=e220]: P
+            - generic [ref=e221]:
+              - paragraph [ref=e222]: Priya Krishnan
+              - paragraph [ref=e223]: Graduate, 2023 Batch
+        - generic [ref=e224]:
+          - button "Previous" [ref=e225] [cursor=pointer]:
+            - img [ref=e226]
+          - generic [ref=e228]:
+            - button "Testimonial 1" [ref=e229] [cursor=pointer]
+            - button "Testimonial 2" [ref=e230] [cursor=pointer]
+            - button "Testimonial 3" [ref=e231] [cursor=pointer]
+            - button "Testimonial 4" [ref=e232] [cursor=pointer]
+          - button "Next" [ref=e233] [cursor=pointer]:
+            - img [ref=e234]
+    - generic [ref=e237]:
+      - generic [ref=e238]:
+        - generic [ref=e239]:
+          - generic [ref=e241]: Recent Events
+          - heading "What's Happening" [level=2] [ref=e243]
+        - link "View All Events" [ref=e245] [cursor=pointer]:
+          - /url: /en/events
+          - text: View All Events
+          - img [ref=e246]
+      - generic [ref=e248]:
+        - generic [ref=e252]:
+          - generic [ref=e253]:
+            - img [ref=e254]
+            - text: December 20, 2024
+          - heading "Graduation Ceremony 2024" [level=3] [ref=e257]
+          - paragraph [ref=e258]: Celebrating our students' achievements and milestones at our annual graduation ceremony.
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - img [ref=e261]
+              - text: Kotagala, Sri Lanka
+            - generic [ref=e263]:
+              - img [ref=e264]
+              - text: 10:00 AM
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - img [ref=e271]
+            - text: November 21, 2024
+          - heading "International Philosophy Day 2024" [level=3] [ref=e274]
+          - paragraph [ref=e275]: Exploring philosophical thinking in contemporary society with engaging discussions and activities.
+          - generic [ref=e276]:
+            - generic [ref=e277]:
+              - img [ref=e278]
+              - text: Kotagala, Sri Lanka
+            - generic [ref=e280]:
+              - img [ref=e281]
+              - text: 2:00 PM
+        - generic [ref=e286]:
+          - generic [ref=e287]:
+            - img [ref=e288]
+            - text: June 5, 2024
+          - heading "Environmental Day 2024" [level=3] [ref=e291]
+          - paragraph [ref=e292]: Community engagement event promoting environmental awareness and sustainable practices.
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - img [ref=e295]
+              - text: Kotagala, Sri Lanka
+            - generic [ref=e297]:
+              - img [ref=e298]
+              - text: 9:00 AM
+    - generic [ref=e303]:
+      - img [ref=e306]
+      - heading "Together, We Can Make a Difference" [level=2] [ref=e309]
+      - paragraph [ref=e311]: Your support helps us continue our mission of empowering communities through education. Every contribution counts.
+      - generic [ref=e313]:
+        - link "Make a Donation" [ref=e314] [cursor=pointer]:
+          - /url: /en/donate
+          - img [ref=e315]
+          - text: Make a Donation
+          - img [ref=e317]
+        - link "Become a Volunteer" [ref=e319] [cursor=pointer]:
+          - /url: /en/volunteer
+          - img [ref=e320]
+          - text: Become a Volunteer
+      - generic [ref=e323]:
+        - generic [ref=e324]: Registered NGO
+        - generic [ref=e326]: Tax Exempt Donations
+        - generic [ref=e328]: Transparent Operations
+        - generic [ref=e330]: "UK Charity #1184062"
+  - contentinfo [ref=e332]:
+    - generic [ref=e335]:
+      - generic [ref=e336]:
+        - link "Sinthanai Foundation" [ref=e337] [cursor=pointer]:
+          - /url: /en
+          - img "Sinthanai Foundation" [ref=e339]
+        - paragraph [ref=e340]: A registered charity dedicated to empowering communities through education in Sri Lanka's hill country.
+        - generic [ref=e341]:
+          - link "Facebook" [ref=e342] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e343]
+          - link "Twitter / X" [ref=e345] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e346]
+          - link "Instagram" [ref=e348] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e349]
+          - link "YouTube" [ref=e351] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e352]
+          - link "LinkedIn" [ref=e354] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e355]
+      - generic [ref=e357]:
+        - heading "Quick Links" [level=3] [ref=e358]
+        - list [ref=e359]:
+          - listitem [ref=e360]:
+            - link "About" [ref=e361] [cursor=pointer]:
+              - /url: /en/about
+              - text: About
+          - listitem [ref=e363]:
+            - link "Programs" [ref=e364] [cursor=pointer]:
+              - /url: /en/programs
+              - text: Programs
+          - listitem [ref=e366]:
+            - link "Gallery" [ref=e367] [cursor=pointer]:
+              - /url: /en/gallery
+              - text: Gallery
+          - listitem [ref=e369]:
+            - link "Events" [ref=e370] [cursor=pointer]:
+              - /url: /en/events
+              - text: Events
+          - listitem [ref=e372]:
+            - link "Donate" [ref=e373] [cursor=pointer]:
+              - /url: /en/donate
+              - text: Donate
+          - listitem [ref=e375]:
+            - link "Volunteer" [ref=e376] [cursor=pointer]:
+              - /url: /en/volunteer
+              - text: Volunteer
+      - generic [ref=e378]:
+        - heading "Contact Us" [level=3] [ref=e379]
+        - list [ref=e380]:
+          - listitem [ref=e381]:
+            - generic [ref=e382]:
+              - img [ref=e384]
+              - generic [ref=e386]: Kotagala, Hatton, Sri Lanka
+          - listitem [ref=e387]:
+            - link "info@sinthanai.org" [ref=e388] [cursor=pointer]:
+              - /url: mailto:info@sinthanai.org
+              - img [ref=e390]
+              - generic [ref=e393]: info@sinthanai.org
+      - generic [ref=e394]:
+        - heading "Newsletter" [level=3] [ref=e395]
+        - paragraph [ref=e396]: Stay updated with our latest news and events.
+        - generic [ref=e398]:
+          - textbox "Your email" [ref=e399]
+          - button [ref=e400] [cursor=pointer]:
+            - img [ref=e401]
+    - generic [ref=e404]:
+      - paragraph [ref=e405]: © 2026 Sinthanai Foundation. All rights reserved.
+      - generic [ref=e406]:
+        - generic [ref=e407]: "UK Registered Charity: 1184062"
+        - generic [ref=e410]: "Sri Lanka Registration: GA 3459"
