@@ -13,7 +13,7 @@ binding = "IMAGES"
 
 [[kv_namespaces]]
 binding = "VINEXT_CACHE"
-id = "your-kv-namespace-id"
+id = "c4e25059c88c444cb654219fb84c2e53"
 
 [env.production]
 name = "sinthanai-org-prod"
