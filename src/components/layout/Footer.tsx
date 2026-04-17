@@ -88,13 +88,15 @@ export default function Footer() {
 
             {/* Brand column */}
             <div className="lg:col-span-4">
-              <Link href="/" className="inline-flex items-center mb-6">
-                <div className="relative flex-shrink-0" style={{ width: '280px', height: '90px' }}>
+              <Link href="/" className="inline-block mb-6">
+                <div className="relative w-[200px] h-[36px] md:w-[280px] h-[50px] lg:w-[300px] lg:h-[54px]">
                   <Image
                     src="/logo.png"
                     alt="Sinthanai Foundation"
                     fill
-                    className="object-contain object-left"
+                    className="object-contain"
+                    sizes="(max-width: 768px) 200px, (max-width: 1024px) 280px, 300px"
+                    priority
                   />
                 </div>
               </Link>
@@ -152,7 +154,7 @@ export default function Footer() {
                   </div>
                 </li>
                 <li>
-                  <a href="mailto:info@sinthanai.org" className="flex items-start gap-3 group/mail">
+                  <a href="mailto:admin@sinthanai.org" className="flex items-start gap-3 group/mail">
                     <div className="w-8 h-8 rounded-lg bg-white/[0.06] flex items-center justify-center flex-shrink-0 mt-0.5">
                       <HiEnvelope className="w-4 h-4 text-brand-teal-light" />
                     </div>

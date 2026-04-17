@@ -22,17 +22,15 @@ export default function FeaturedPrograms() {
       <div className="container-custom">
 
         {/* Section header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-6 md:mb-8">
-          <div>
-            <AnimatedSection>
-              <span className="badge-red mb-2">{t('tag')}</span>
-            </AnimatedSection>
-            <AnimatedSection delay={0.08}>
-              <h2 className="text-h2 text-white">{t('title')}</h2>
-            </AnimatedSection>
-          </div>
-          <AnimatedSection delay={0.12} direction="right">
-            <p className="text-body max-w-sm md:text-right">{t('subtitle')}</p>
+        <div className="flex flex-col gap-3 mb-6 md:mb-8">
+          <AnimatedSection>
+            <span className="badge-red mb-2">{t('tag')}</span>
+          </AnimatedSection>
+          <AnimatedSection delay={0.08}>
+            <h2 className="text-h2 text-white">{t('title')}</h2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.12}>
+            <p className="text-body max-w-2xl">{t('subtitle')}</p>
           </AnimatedSection>
         </div>
 

@@ -12,6 +12,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'sinthanai.org' },
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'sinthanai-assets.rvdtechsolutions.com' },
+      { protocol: 'https', hostname: 'pub-cebc9e73438146788fb6fd8ce134426b.r2.dev' },
       { protocol: 'http', hostname: 'localhost' },
     ],
   },

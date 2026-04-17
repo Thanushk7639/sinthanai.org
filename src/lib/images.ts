@@ -1,23 +1,3 @@
-export interface GDIFile {
-  kind?: string;
-  name: string;
-  mimeType: string;
-  size?: string;
-  modifiedTime?: string;
-  fileExtension?: string;
-  id: string;
-  driveId: string;
-  link: string | null;
-}
-
-export interface GDIListResponse {
-  nextPageToken: string | null;
-  curPageIndex: number;
-  data: {
-    files: GDIFile[];
-  };
-}
-
 export interface MediaItem {
   name: string;
   mimeType: string;
@@ -35,8 +15,23 @@ export interface GallerySection {
   items: MediaItem[];
 }
 
-const GDI_API = '/api/gdi';
-const GDI_PUBLIC_URL = process.env.NEXT_PUBLIC_GDI_URL || '';
+const R2_BASE_URL = 'https://pub-cebc9e73438146788fb6fd8ce134426b.r2.dev';
+
+interface ManifestFile {
+  name: string;
+  path: string;
+  folder: string;
+  mimeType: string;
+  size: number;
+}
+
+interface Manifest {
+  generatedAt: string;
+  totalFiles: number;
+  files: ManifestFile[];
+}
+
+let manifestCache: Manifest | null = null;
 
 function isImage(mimeType: string): boolean {
   return mimeType.startsWith('image/');
@@ -46,49 +41,39 @@ function isVideo(mimeType: string): boolean {
   return mimeType.startsWith('video/');
 }
 
-function isFolder(mimeType: string): boolean {
-  return mimeType === 'application/vnd.google-apps.folder';
+async function fetchManifest(): Promise<Manifest> {
+  if (manifestCache) return manifestCache;
+  
+  const res = await fetch('/manifest.json');
+  if (!res.ok) throw new Error('Failed to fetch manifest');
+  manifestCache = await res.json();
+  return manifestCache!;
 }
 
-function isJunk(mimeType: string, name: string): boolean {
-  if (mimeType === 'application/x-partial-download') return true;
-  if (name.endsWith('.crdownload')) return true;
-  return false;
+function encodeR2Path(path: string): string {
+  return path
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/');
 }
 
-function toMediaItem(file: GDIFile): MediaItem {
-  let url = '';
-  if (file.link && GDI_PUBLIC_URL) {
-    url = `${GDI_PUBLIC_URL}${file.link}&inline=true`;
-  }
-  return {
-    name: file.name,
-    mimeType: file.mimeType,
-    url,
-    isFolder: isFolder(file.mimeType),
-    id: file.id,
-    size: file.size,
-  };
-}
-
-async function fetchFolder(path: string): Promise<GDIFile[]> {
-  const res = await fetch(GDI_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'list', path }),
+export async function getFolderMediaItems(folderPath: string): Promise<MediaItem[]> {
+  const manifest = await fetchManifest();
+  
+  const files = manifest.files.filter((f) => {
+    const normalizedFolder = f.folder.replace(/\/$/, '');
+    const normalizedPath = folderPath.replace(/\/$/, '');
+    return normalizedFolder === normalizedPath;
   });
-
-  if (!res.ok) return [];
-  const data: GDIListResponse = await res.json();
-  return data.data?.files || [];
-}
-
-export async function getFolderMediaItems(path: string): Promise<MediaItem[]> {
-  const files = await fetchFolder(path);
-  return files
-    .filter((f) => !isFolder(f.mimeType))
-    .filter((f) => !isJunk(f.mimeType, f.name))
-    .map(toMediaItem);
+  
+  return files.map((f) => ({
+    name: f.name,
+    mimeType: f.mimeType,
+    url: `${R2_BASE_URL}/${encodeR2Path(f.path)}`,
+    isFolder: false,
+    id: f.path.replace(/[^a-zA-Z0-9]/g, '_'),
+    size: f.size?.toString(),
+  }));
 }
 
 export async function getFolderImages(path: string): Promise<MediaItem[]> {
@@ -102,13 +87,20 @@ export async function getFolderVideos(path: string): Promise<MediaItem[]> {
 }
 
 export async function getAboutImages(): Promise<MediaItem[]> {
-  const allImages = await getFolderImages('gallery/Spoken English Awarding Ceremony');
-  return allImages.slice(0, 6);
+  const aboutImages = await getFolderImages('about');
+  return aboutImages.slice(0, 6);
 }
 
 export async function getHeroImages(): Promise<MediaItem[]> {
   const homeImages = await getFolderImages('Home screen');
-  const heroImages = homeImages.filter((i) => !i.name.startsWith('b') && i.name !== 'logo-1.png' && i.name !== 'sinthanai.png');
+  
+  const dynamicImages = homeImages.filter((i) => 
+    !i.name.startsWith('b') && 
+    !i.name.startsWith('logo') && 
+    !i.name.startsWith('sinthanai') &&
+    !i.name.startsWith('slidder') &&
+    !i.name.endsWith('.mp4')
+  );
   
   const staticSliderImages: MediaItem[] = [
     { name: 'Slide 2', mimeType: 'image/png', url: '/slider/slide2.png', isFolder: false, id: 'static-slide-2' },
@@ -117,33 +109,55 @@ export async function getHeroImages(): Promise<MediaItem[]> {
   ];
   
   const result: MediaItem[] = [];
+  let staticIdx = 0;
+  let dynamicIdx = 0;
+  
   for (let i = 0; i < 6; i++) {
     if (i === 1 || i === 3 || i === 5) {
-      const staticIdx = i === 1 ? 0 : i === 3 ? 1 : 2;
-      result.push(staticSliderImages[staticIdx]);
-    } else if (heroImages[i]) {
-      result.push(heroImages[i]);
+      if (staticIdx < staticSliderImages.length) {
+        result.push(staticSliderImages[staticIdx]);
+        staticIdx++;
+      }
+    } else {
+      if (dynamicIdx < dynamicImages.length) {
+        result.push(dynamicImages[dynamicIdx]);
+        dynamicIdx++;
+      }
     }
   }
   
-  return result.length > 0 ? result : heroImages.slice(0, 6);
+  return result.length > 0 ? result : dynamicImages.slice(0, 6);
 }
 
 export async function getBannerImages(): Promise<MediaItem[]> {
-  const images = await getFolderImages('Home screen');
-  return images.filter((i) => i.name.startsWith('b'));
+  const homeImages = await getFolderImages('Home screen');
+  return homeImages.filter((i) => i.name.startsWith('b'));
 }
 
 export async function getLogoImage(): Promise<MediaItem | null> {
-  const images = await getFolderImages('Home screen');
-  return images.find((i) => i.name === 'logo-1.png') || null;
+  const homeImages = await getFolderImages('Home screen');
+  return homeImages.find((i) => i.name === 'logo-1.png') || null;
 }
 
 export async function getGallerySubFolders(): Promise<{ name: string; path: string; id: string }[]> {
-  const files = await fetchFolder('gallery');
-  return files
-    .filter((f) => isFolder(f.mimeType))
-    .map((f) => ({ name: f.name, path: `gallery/${f.name}`, id: f.id }));
+  const manifest = await fetchManifest();
+  
+  const folderSet = new Set<string>();
+  
+  for (const f of manifest.files) {
+    if (f.folder.startsWith('gallery/')) {
+      const folderName = f.folder.replace('gallery/', '');
+      if (folderName && !folderName.includes('/')) {
+        folderSet.add(folderName);
+      }
+    }
+  }
+  
+  return Array.from(folderSet).map((name) => ({
+    name,
+    path: `gallery/${name}`,
+    id: name.replace(/[^a-zA-Z0-9]/g, '_'),
+  }));
 }
 
 export async function getGallerySections(): Promise<GallerySection[]> {
@@ -184,18 +198,4 @@ export async function getAllGalleryVideos(): Promise<MediaItem[]> {
 
 export async function getCommentsImages(): Promise<MediaItem[]> {
   return getFolderImages('gallery/Comments from the students');
-}
-
-export async function searchFiles(query: string): Promise<MediaItem[]> {
-  const res = await fetch(GDI_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'search', q: query }),
-  });
-
-  if (!res.ok) return [];
-  const data: GDIListResponse = await res.json();
-  return data.data?.files
-    ?.filter((f) => !isFolder(f.mimeType) && f.link)
-    .map(toMediaItem) || [];
 }

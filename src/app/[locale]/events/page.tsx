@@ -25,7 +25,7 @@ const pastEvents = [
     date: 'November 21, 2024',
     location: 'Kotagala, Sri Lanka',
     description: 'Exploring philosophical thinking in contemporary society with engaging discussions and activities.',
-    galleryFolder: 'Spoken English Awarding Ceremony',
+    galleryFolder: 'Graduation Ceremony 2020',
     accentBg: 'bg-brand-ink',
   },
   {
@@ -43,7 +43,7 @@ const pastEvents = [
     date: 'January 13, 2024',
     location: 'Kotagala, Sri Lanka',
     description: 'Celebration of the 2023 batch graduates with certificate distribution and cultural performances.',
-    galleryFolder: 'Graduation Ceremony 2023',
+    galleryFolder: 'Graduation Ceremony 2021',
     accentBg: 'bg-brand-red',
   },
   {
@@ -52,7 +52,7 @@ const pastEvents = [
     date: 'November 16, 2023',
     location: 'Kotagala, Sri Lanka',
     description: 'Annual celebration of intellectual development through philosophy, discussions, and contemplative activities.',
-    galleryFolder: 'Certificate Awarding Ceremony Held on 02-02-2019',
+    galleryFolder: 'Certificate Awarding of Rapid Learning Programmes - 2020',
     accentBg: 'bg-brand-ink',
   },
   {
@@ -70,7 +70,7 @@ const pastEvents = [
     date: 'June 5, 2023',
     location: 'Kotagala, Sri Lanka',
     description: 'Community march with environmental advocacy materials and awareness campaign.',
-    galleryFolder: 'International Enviornmental Day 2023',
+    galleryFolder: 'Centre for Social Concern – 23-04-18',
     accentBg: 'bg-brand-teal',
   },
 ];
@@ -97,8 +97,12 @@ function useEventImagesCache() {
         
         pastEvents.forEach((event) => {
           const matchingSection = sections.find(
-            (s) => s.name.toLowerCase().includes(event.galleryFolder.toLowerCase()) ||
-                   event.galleryFolder.toLowerCase().includes(s.name.toLowerCase())
+            (s) => {
+              const sectionName = s.name.trim();
+              const folderName = event.galleryFolder.trim();
+              return sectionName.toLowerCase().includes(folderName.toLowerCase()) ||
+                     folderName.toLowerCase().includes(sectionName.toLowerCase());
+            }
           );
           if (matchingSection) {
             const images = matchingSection.items.filter((i) => i.mimeType.startsWith('image/'));
@@ -134,6 +138,8 @@ function EventCard({
   onExpand: (event: typeof pastEvents[0]) => void;
   isLoaded: boolean;
 }) {
+  const accentTextClass = event.accentBg === 'bg-brand-red'
+
   return (
     <AnimatedSection delay={index * 0.05}>
       <motion.div
@@ -145,7 +151,7 @@ function EventCard({
         <div className="flex">
           <div className={`w-1.5 ${event.accentBg} flex-shrink-0`} />
           <div className="p-6 flex-1">
-            <h3 className="font-heading font-bold text-white text-base mb-2 leading-tight group-hover:text-brand-teal transition-colors">
+            <h3 className="font-heading font-bold text-white text-base mb-2 leading-tight group-hover:text-white/80 transition-colors">
               {event.title}
             </h3>
             <p className="text-xs text-white/70 leading-relaxed mb-4">
@@ -153,15 +159,15 @@ function EventCard({
             </p>
             <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
               <span className="flex items-center gap-1.5 text-xs text-white/70">
-                <HiCalendarDays className="w-3.5 h-3.5 text-brand-red flex-shrink-0" />
+                <HiCalendarDays className={`w-3.5 h-3.5 ${accentTextClass} flex-shrink-0`} />
                 {event.date}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-white/70">
-                <HiMapPin className="w-3.5 h-3.5 text-white flex-shrink-0" />
+                <HiMapPin className="w-3.5 h-3.5 text-white/70 flex-shrink-0" />
                 {event.location}
               </span>
             </div>
-            <div className="flex items-center gap-2 text-brand-teal text-sm font-medium group-hover:gap-3 transition-all">
+            <div className={`flex items-center gap-2 ${accentTextClass} text-sm font-medium group-hover:gap-3 transition-all`}>
               <HiCamera className="w-4 h-4" />
               <span>{isLoaded ? 'View Photos' : 'Loading...'}</span>
               <HiArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
@@ -268,7 +274,7 @@ function ExpandedEventModal({
 
             <Link
               href={`/gallery?event=${event.id}`}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-teal text-white font-semibold rounded-full hover:bg-brand-teal/80 transition-all duration-200"
+              className={`inline-flex items-center gap-2 px-6 py-3 ${event.accentBg} text-white font-semibold rounded-full hover:opacity-80 transition-all duration-200`}
             >
               <HiCamera className="w-5 h-5" />
               View More Images

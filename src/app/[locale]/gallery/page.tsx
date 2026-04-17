@@ -298,18 +298,22 @@ export default function GalleryPage() {
 
   const eventFolderMap: Record<string, string> = {
     'graduation-2024': 'Graduation Ceremony 2023',
-    'philosophy-2024': 'Spoken English Awarding Ceremony',
+    'philosophy-2024': 'Graduation Ceremony 2020',
     'environmental-2024': 'International Enviornmental Day 2023',
-    'graduation-2023': 'Graduation Ceremony 2023',
-    'philosophy-2023': 'Certificate Awarding Ceremony Held on 02-02-2019',
+    'graduation-2023': 'Graduation Ceremony 2021',
+    'philosophy-2023': 'Certificate Awarding of Rapid Learning Programmes - 2020',
     'youth-2023': 'Interactive English Session',
-    'environmental-2023': 'International Enviornmental Day 2023',
+    'environmental-2023': 'Centre for Social Concern – 23-04-18',
   };
 
   const filteredSection = eventFolder && eventFolderMap[eventFolder]
     ? sections.find(
-        (s) => s.name.toLowerCase().includes(eventFolderMap[eventFolder].toLowerCase()) ||
-               eventFolderMap[eventFolder].toLowerCase().includes(s.name.toLowerCase())
+        (s) => {
+          const sectionName = s.name.trim();
+          const folderName = eventFolderMap[eventFolder].trim();
+          return sectionName.toLowerCase().includes(folderName.toLowerCase()) ||
+                 folderName.toLowerCase().includes(sectionName.toLowerCase());
+        }
       ) || null
     : null;
 
@@ -449,13 +453,11 @@ export default function GalleryPage() {
                 transition={{ duration: 0.25 }}
               >
                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                  <AnimatePresence>
-                    {sections.map((section, index) => (
-                      <AnimatedSection key={section.path} delay={index * 0.04}>
-                        <SectionCard section={section} allImagesRef={allImagesRef} />
-                      </AnimatedSection>
-                    ))}
-                  </AnimatePresence>
+                  {sections.map((section, index) => (
+                    <AnimatedSection key={section.path} delay={index * 0.04}>
+                      <SectionCard section={section} allImagesRef={allImagesRef} />
+                    </AnimatedSection>
+                  ))}
                 </div>
               </motion.div>
             )}

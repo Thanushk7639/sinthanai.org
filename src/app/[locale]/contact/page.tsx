@@ -9,7 +9,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
 const contactInfo = [
   { key: 'address', icon: HiMapPin, valueKey: 'address_value', bg: 'bg-white/15', border: 'border-white/25', iconColor: 'text-brand-red' },
   { key: 'phone', icon: HiPhone, value: '+94 81 292 2016', bg: 'bg-white/15', border: 'border-white/25', iconColor: 'text-brand-teal' },
-  { key: 'email_label', icon: HiEnvelope, value: 'info@sinthanai.org', href: 'mailto:info@sinthanai.org', bg: 'bg-white/15', border: 'border-white/25', iconColor: 'text-brand-red' },
+  { key: 'email_label', icon: HiEnvelope, value: 'admin@sinthanai.org', href: 'mailto:admin@sinthanai.org', bg: 'bg-white/15', border: 'border-white/25', iconColor: 'text-brand-red' },
   { key: 'hours', icon: HiClock, valueKey: 'hours_value', bg: 'bg-white/15', border: 'border-white/25', iconColor: 'text-brand-teal' },
 ] as const;
 
