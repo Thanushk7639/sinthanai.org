@@ -8,11 +8,11 @@ const config: Config = {
   ],
   safelist: [
     {
-      pattern: /bg-brand-(ink|red|teal)/,
+      pattern: /bg-brand-(ink|red|teal|teal-light)/,
       variants: [],
     },
     {
-      pattern: /text-brand-(ink|red|teal)/,
+      pattern: /text-brand-(ink|red|teal|teal-light)/,
       variants: [],
     },
   ],

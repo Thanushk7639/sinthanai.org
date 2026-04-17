@@ -124,6 +124,7 @@ export default function ImageSlider() {
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 90vw"
                 priority={currentIndex === 0}
+                unoptimized={images[currentIndex].url.startsWith('http')}
               />
             </motion.div>
           </AnimatePresence>
