@@ -136,14 +136,14 @@ function ProgramCard({ program, index }: { program: typeof programsData[0]; inde
                 <p className="text-sm text-white/70 leading-relaxed">{program.overview}</p>
               </div>
               
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {isExpanded && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    className="overflow-hidden"
+                    style={{ overflow: 'hidden' }}
                   >
                     <div className="space-y-5 pt-4 border-t border-white/15">
                       <div>
@@ -177,7 +177,7 @@ function ProgramCard({ program, index }: { program: typeof programsData[0]; inde
                         <p className="text-sm text-white/70 leading-relaxed">{program.whyItMatters}</p>
                       </div>
                       
-                      <div className={`${program.accentBg}/20 rounded-xl p-4 border border-white/20`}>
+                      <div className="bg-white/10 rounded-xl p-4 border border-white/20">
                         <p className="text-xs font-bold text-white uppercase tracking-wide mb-2">Outcome</p>
                         <p className="text-sm text-white/80 leading-relaxed font-medium">{program.outcome}</p>
                       </div>
