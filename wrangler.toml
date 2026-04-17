@@ -1,0 +1,27 @@
+name = "sinthanai-org"
+main = "./worker/index.ts"
+compatibility_date = "2026-04-16"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "dist/client"
+binding = "ASSETS"
+not_found_handling = "none"
+
+[images]
+binding = "IMAGES"
+
+[[kv_namespaces]]
+binding = "VINEXT_CACHE"
+id = "your-kv-namespace-id"
+
+[env.production]
+name = "sinthanai-org-prod"
+
+[env.production.assets]
+directory = "dist/client"
+binding = "ASSETS"
+not_found_handling = "none"
+
+[env.production.images]
+binding = "IMAGES"
