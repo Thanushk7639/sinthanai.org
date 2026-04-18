@@ -4,84 +4,80 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion } from 'framer-motion';
-import { HiLanguage, HiComputerDesktop, HiLightBulb, HiHeart, HiGlobeAlt, HiArrowRight } from 'react-icons/hi2';
-
-const programs = [
-  { key: 'spoken_english', icon: HiLanguage, num: '01', accentBg: 'bg-brand-red', accentLight: 'bg-white/15', accentText: 'text-white' },
-  { key: 'it_skills', icon: HiComputerDesktop, num: '02', accentBg: 'bg-brand-teal', accentLight: 'bg-white/15', accentText: 'text-white' },
-  { key: 'philosophy', icon: HiLightBulb, num: '03', accentBg: 'bg-brand-red', accentLight: 'bg-white/15', accentText: 'text-white' },
-  { key: 'food_thought', icon: HiHeart, num: '04', accentBg: 'bg-brand-teal', accentLight: 'bg-white/15', accentText: 'text-white' },
-  { key: 'skype_english', icon: HiGlobeAlt, num: '05', accentBg: 'bg-brand-red', accentLight: 'bg-white/15', accentText: 'text-white' },
-] as const;
+import { programsDetail } from '@/lib/programs';
 
 export default function FeaturedPrograms() {
   const t = useTranslations('programs_section');
 
   return (
-    <section className="py-10 md:py-12 bg-brand-bg">
+    <section className="py-16 md:py-20 bg-brand-bg">
       <div className="container-custom">
-
-        {/* Section header */}
-        <div className="flex flex-col gap-3 mb-6 md:mb-8">
+        <div className="text-center mb-12">
           <AnimatedSection>
-            <span className="badge-red mb-2">{t('tag')}</span>
+            <span className="badge-red mb-4">{t('tag')}</span>
           </AnimatedSection>
           <AnimatedSection delay={0.08}>
-            <h2 className="text-h2 text-white">{t('title')}</h2>
+            <h2 className="text-h2 text-white mb-4">{t('title')}</h2>
           </AnimatedSection>
           <AnimatedSection delay={0.12}>
-            <p className="text-body max-w-2xl">{t('subtitle')}</p>
+            <p className="text-body max-w-2xl mx-auto">{t('subtitle')}</p>
           </AnimatedSection>
         </div>
 
-        {/* Programs grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {programs.map((program, index) => (
-            <AnimatedSection key={program.key} delay={index * 0.07}>
-              <motion.div
-                className="bg-white/15 backdrop-blur-sm border border-white/25 rounded-2xl p-5 flex flex-col h-full group cursor-default hover:bg-white/22 hover:border-white/45 hover:shadow-lg transition-all duration-300"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl ${program.accentBg} flex items-center justify-center`}>
-                    <program.icon className="w-6 h-6 text-white" />
+        <div className="grid md:grid-cols-2 gap-6">
+          {programsDetail.map((program, index) => (
+            <AnimatedSection key={program.id} delay={index * 0.1}>
+              <Link href={`/programs#${program.id}`} className="block h-full">
+                <motion.div
+                  className="h-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden hover:border-white/40 hover:bg-white/15 transition-all duration-300 group"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <div className={`h-1 ${program.accentBg}`} />
+                  
+                  <div className="p-6">
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className={`w-12 h-12 rounded-xl ${program.accentBg} flex items-center justify-center flex-shrink-0`}>
+                        <program.icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-lg md:text-xl font-heading font-bold text-white group-hover:text-brand-teal transition-colors">
+                        {program.title}
+                      </h3>
+                    </div>
+                    
+                    <p className="text-white/70 text-sm md:text-base leading-relaxed mb-6 line-clamp-3">
+                      {program.overview}
+                    </p>
+                    
+                    <div className="flex items-center gap-2 text-sm font-semibold text-white">
+                      <span>Read More</span>
+                      <motion.span
+                        className="inline-block"
+                        whileHover={{ x: 4 }}
+                      >
+                        →
+                      </motion.span>
+                    </div>
                   </div>
-                  <span className="text-xs font-heading font-bold text-white/40 tracking-widest">{program.num}</span>
-                </div>
-
-                <h3 className="font-heading font-bold text-white text-lg mb-3 leading-tight group-hover:text-white/80 transition-colors duration-200">
-                  {t(program.key)}
-                </h3>
-                <p className="text-sm text-white/70 leading-relaxed flex-grow">
-                  {t(`${program.key}_desc`)}
-                </p>
-
-                <div className="mt-5 inline-flex items-center gap-1.5 text-xs font-semibold text-white/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <span>Learn more</span>
-                  <HiArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </motion.div>
+                </motion.div>
+              </Link>
             </AnimatedSection>
           ))}
-
-          {/* View All card */}
-          <AnimatedSection delay={programs.length * 0.07}>
-            <Link href="/programs" className="block h-full">
-              <motion.div
-                className="bg-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-7 flex flex-col items-center justify-center text-center h-full min-h-[220px] group cursor-pointer hover:bg-white/20 transition-all duration-300"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.25 }}
-              >
-                <div className="w-14 h-14 rounded-2xl border-2 border-white/30 flex items-center justify-center mb-4 group-hover:border-white group-hover:bg-white/20 transition-all duration-300">
-                  <HiArrowRight className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="font-heading font-bold text-white text-xl mb-2">{t('view_all')}</h3>
-                <p className="text-white/60 text-sm">Explore all our programs</p>
-              </motion.div>
-            </Link>
-          </AnimatedSection>
         </div>
+
+        <AnimatedSection delay={0.5}>
+          <div className="mt-10 text-center">
+            <Link
+              href="/programs"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-brand-red text-white font-semibold rounded-full hover:bg-brand-teal transition-colors duration-300"
+            >
+              <span>{t('view_all')}</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

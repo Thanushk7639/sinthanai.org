@@ -8,72 +8,7 @@ import { HiCalendarDays, HiMapPin, HiCamera, HiArrowRight, HiXMark, HiPhoto } fr
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { getGallerySections, type GallerySection, type MediaItem } from '@/lib/images';
-
-const pastEvents = [
-  {
-    id: 'graduation-2024',
-    title: 'Graduation Ceremony 2024',
-    date: 'December 20, 2024',
-    location: 'Kotagala, Sri Lanka',
-    description: "Celebrating our students' achievements and milestones at our annual graduation ceremony.",
-    galleryFolder: 'Graduation Ceremony 2023',
-    accentBg: 'bg-brand-red',
-  },
-  {
-    id: 'philosophy-2024',
-    title: 'International Philosophy Day 2024',
-    date: 'November 21, 2024',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Exploring philosophical thinking in contemporary society with engaging discussions and activities.',
-    galleryFolder: 'Graduation Ceremony 2020',
-    accentBg: 'bg-brand-ink',
-  },
-  {
-    id: 'environmental-2024',
-    title: 'Environmental Day 2024',
-    date: 'June 5, 2024',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Community engagement event promoting environmental awareness and sustainable practices.',
-    galleryFolder: 'International Enviornmental Day 2023',
-    accentBg: 'bg-brand-teal',
-  },
-  {
-    id: 'graduation-2023',
-    title: 'Graduation Ceremony 2023',
-    date: 'January 13, 2024',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Celebration of the 2023 batch graduates with certificate distribution and cultural performances.',
-    galleryFolder: 'Graduation Ceremony 2021',
-    accentBg: 'bg-brand-red',
-  },
-  {
-    id: 'philosophy-2023',
-    title: 'International Philosophy Day 2023',
-    date: 'November 16, 2023',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Annual celebration of intellectual development through philosophy, discussions, and contemplative activities.',
-    galleryFolder: 'Certificate Awarding of Rapid Learning Programmes - 2020',
-    accentBg: 'bg-brand-ink',
-  },
-  {
-    id: 'youth-2023',
-    title: 'International Youth Day 2023',
-    date: 'August 12, 2023',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Event addressing contemporary youth challenges with panel discussions and interactive workshops.',
-    galleryFolder: 'Interactive English Session',
-    accentBg: 'bg-brand-teal',
-  },
-  {
-    id: 'environmental-2023',
-    title: 'Environmental Day 2023',
-    date: 'June 5, 2023',
-    location: 'Kotagala, Sri Lanka',
-    description: 'Community march with environmental advocacy materials and awareness campaign.',
-    galleryFolder: 'Centre for Social Concern – 23-04-18',
-    accentBg: 'bg-brand-teal',
-  },
-];
+import { events, type Event } from '@/lib/events';
 
 type EventImagesMap = Record<string, MediaItem[]>;
 
@@ -95,12 +30,13 @@ function useEventImagesCache() {
       cacheLoadingPromise = getGallerySections().then((sections: GallerySection[]) => {
         const imageMap: EventImagesMap = {};
         
-        pastEvents.forEach((event) => {
+        events.forEach((event) => {
+          const folderName = event.galleryFolder.replace('gallery/', '').trim();
           const matchingSection = sections.find(
             (s) => {
-              const sectionName = s.name.trim();
-              const folderName = event.galleryFolder.trim();
-              return sectionName.toLowerCase().includes(folderName.toLowerCase()) ||
+              const sectionName = s.name.replace(/\n/g, '').trim();
+              return sectionName.toLowerCase() === folderName.toLowerCase() ||
+                     sectionName.toLowerCase().includes(folderName.toLowerCase()) ||
                      folderName.toLowerCase().includes(sectionName.toLowerCase());
             }
           );
@@ -133,17 +69,18 @@ function EventCard({
   onExpand,
   isLoaded,
 }: {
-  event: typeof pastEvents[0];
+  event: Event;
   index: number;
-  onExpand: (event: typeof pastEvents[0]) => void;
+  onExpand: (event: Event) => void;
   isLoaded: boolean;
 }) {
-  const accentTextClass = event.accentBg === 'bg-brand-red'
+  const accentTextClass = event.accentBg === 'bg-brand-red' ? 'text-brand-red' : 'text-brand-teal';
 
   return (
     <AnimatedSection delay={index * 0.05}>
       <motion.div
-        className="bg-white/[0.08] border border-white/20 rounded-2xl overflow-hidden hover:border-white/35 hover:shadow-md transition-all duration-300 cursor-pointer group"
+        id={event.id}
+        className="bg-white/[0.08] border border-white/20 rounded-2xl overflow-hidden hover:border-white/35 hover:shadow-md transition-all duration-300 cursor-pointer group scroll-mt-24"
         whileHover={{ y: -4 }}
         transition={{ duration: 0.25 }}
         onClick={() => onExpand(event)}
@@ -184,7 +121,7 @@ function ExpandedEventModal({
   onClose,
   images,
 }: {
-  event: typeof pastEvents[0];
+  event: Event;
   onClose: () => void;
   images: MediaItem[];
 }) {
@@ -272,14 +209,14 @@ function ExpandedEventModal({
             )}
           </div>
 
-            <Link
-              href={`/gallery?event=${event.id}`}
-              className={`inline-flex items-center gap-2 px-6 py-3 ${event.accentBg} text-white font-semibold rounded-full hover:opacity-80 transition-all duration-200`}
-            >
-              <HiCamera className="w-5 h-5" />
-              View More Images
-              <HiArrowRight className="w-4 h-4" />
-            </Link>
+          <Link
+            href={`/gallery?event=${event.id}`}
+            className={`inline-flex items-center gap-2 px-6 py-3 ${event.accentBg} text-white font-semibold rounded-full hover:opacity-80 transition-all duration-200`}
+          >
+            <HiCamera className="w-5 h-5" />
+            View More Images
+            <HiArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </motion.div>
     </motion.div>
@@ -288,10 +225,26 @@ function ExpandedEventModal({
 
 export default function EventsPage() {
   const t = useTranslations('events_page');
-  const [selectedEvent, setSelectedEvent] = useState<typeof pastEvents[0] | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const { eventImages, isLoaded } = useEventImagesCache();
 
-  const handleEventClick = useCallback((event: typeof pastEvents[0]) => {
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const event = events.find(e => e.id === hash);
+      if (event) {
+        setSelectedEvent(event);
+        setTimeout(() => {
+          const element = document.getElementById(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    }
+  }, []);
+
+  const handleEventClick = useCallback((event: Event) => {
     setSelectedEvent(event);
   }, []);
 
@@ -343,12 +296,12 @@ export default function EventsPage() {
           <AnimatedSection>
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-h3 text-white">{t('past')}</h2>
-              <span className="badge">{pastEvents.length} Events</span>
+              <span className="badge">{events.length} Events</span>
             </div>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {pastEvents.map((event, index) => (
+            {events.map((event, index) => (
               <EventCard
                 key={event.id}
                 event={event}

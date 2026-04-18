@@ -9,28 +9,33 @@ import { getCommentsImages } from '@/lib/images';
 
 const testimonials = [
   {
-    quote: 'Sinthanai Foundation transformed my life. The English program gave me the confidence to pursue higher education and achieve my dreams.',
-    name: 'Priya Krishnan',
-    role: 'Graduate, 2023 Batch',
+    quote: 'I successfully completed my diploma course at Sinthanai Foundation, which greatly improved my English language skills. The course enhanced my speaking, writing, and communication abilities. I appreciate the supportive teaching and structured learning environment provided.',
+    name: 'Karunakaran Vinoditha',
+    role: '2022 Batch',
   },
   {
-    quote: 'The IT skills training opened up new career opportunities I never thought possible. The teachers are incredibly dedicated and supportive.',
-    name: 'Suresh Kumar',
-    role: 'IT Skills Graduate, 2022',
+    quote: 'The IT knowledge provided by Sinthanai Foundation to me was more than adequate for my university studies and it also equates many years of experiential knowledge of my work colleagues.',
+    name: 'Manikavel Dinushan',
+    role: '2023 Batch',
   },
   {
-    quote: 'As a volunteer teaching English online, I have been deeply moved by the students\' determination to learn. This foundation is doing remarkable work.',
-    name: 'Sarah Thompson',
-    role: 'Online English Volunteer, UK',
+    quote: 'I was born and raised over 18 years in an area which is predominantly populated by Sinhalese, yet I could not speak their language, but you made me speak Sinhala in 10 months. So a big heartfelt THANK YOU Sinthanai Foundation.',
+    name: 'Jegan Bieula',
+    role: '2024 Batch',
+  },
+  {
+    quote: 'I volunteered with this organization in Sri Lanka in 2019, teaching students while I was traveling, and it was a great experience. The school does an amazing job providing kids with quality education through a strong and well-organized program. I\'ve stayed involved by setting up yearly English sessions with colleagues from companies I\'ve worked for in the Netherlands, which has been really rewarding. Communication is always clear and smooth, the students and teachers are very polite, the organization is well organised. I\'d definitely recommend getting involved!',
+    name: 'Caren Wegdam',
+    role: 'Volunteer - Netherlands',
   },
   {
     quote: 'The philosophy program expanded my thinking in ways I never imagined. It taught me to question, analyze, and understand the world around me.',
-    name: 'Kavitha Rajan',
-    role: 'Philosophy Program Participant',
+    name: 'Vinith Kumar',
+    role: '2023 Batch',
   },
 ];
 
-const avatarColors = ['bg-brand-red', 'bg-brand-teal', 'bg-brand-ink', 'bg-brand-red'];
+const avatarColors = ['bg-brand-red', 'bg-brand-teal', 'bg-brand-ink', 'bg-brand-red', 'bg-brand-teal'];
 
 export default function Testimonials() {
   const t = useTranslations('testimonials');

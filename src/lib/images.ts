@@ -61,8 +61,8 @@ export async function getFolderMediaItems(folderPath: string): Promise<MediaItem
   const manifest = await fetchManifest();
   
   const files = manifest.files.filter((f) => {
-    const normalizedFolder = f.folder.replace(/\/$/, '');
-    const normalizedPath = folderPath.replace(/\/$/, '');
+    const normalizedFolder = f.folder.replace(/\/$/, '').replace(/\n/g, '').trim();
+    const normalizedPath = folderPath.replace(/\/$/, '').trim();
     return normalizedFolder === normalizedPath;
   });
   
@@ -145,8 +145,9 @@ export async function getGallerySubFolders(): Promise<{ name: string; path: stri
   const folderSet = new Set<string>();
   
   for (const f of manifest.files) {
-    if (f.folder.startsWith('gallery/')) {
-      const folderName = f.folder.replace('gallery/', '');
+    const cleanFolder = f.folder.replace(/\n/g, '').trim();
+    if (cleanFolder.startsWith('gallery/')) {
+      const folderName = cleanFolder.replace('gallery/', '');
       if (folderName && !folderName.includes('/')) {
         folderSet.add(folderName);
       }

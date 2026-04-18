@@ -1,119 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  HiLanguage, 
-  HiComputerDesktop, 
-  HiLightBulb, 
-  HiHeart, 
-  HiGlobeAlt,
-  HiChevronDown,
-  HiCheckCircle 
-} from 'react-icons/hi2';
+import { HiChevronDown, HiCheckCircle } from 'react-icons/hi2';
+import { programsDetail } from '@/lib/programs';
 
-const programsData = [
-  {
-    id: 'language',
-    title: 'Interactive Language Development',
-    icon: HiLanguage,
-    accentBg: 'bg-brand-red',
-    accentText: 'text-white',
-    accentHighlight: 'text-brand-teal-light',
-    overview: 'Communication is a foundational skill for personal and professional success. This program focuses on developing strong language abilities through structured learning and interactive engagement.',
-    whatWeDo: [
-      'Training in English and Sinhala languages',
-      'Vocabulary building and pronunciation improvement',
-      'Group discussions, storytelling, and role-play',
-      'Real-life communication scenarios',
-    ],
-    whyItMatters: 'Many students from underserved communities lack exposure to effective communication environments. This program ensures they gain the confidence and clarity required to express themselves in academic, professional, and social settings.',
-    outcome: 'Participants become confident communicators, better prepared for higher education and workplace interactions.',
-  },
-  {
-    id: 'it',
-    title: 'IT & Digital Skills',
-    icon: HiComputerDesktop,
-    accentBg: 'bg-brand-teal',
-    accentText: 'text-white',
-    accentHighlight: 'text-brand-teal-light',
-    overview: 'In today\'s digital world, technology literacy is essential. This program equips students with practical computer knowledge and digital skills required to succeed in modern careers.',
-    whatWeDo: [
-      'Basic computer training',
-      'Internet and digital tool usage',
-      'Introduction to office applications',
-      'Digital communication and online collaboration',
-    ],
-    whyItMatters: 'Youth from plantation and rural communities often lack access to digital education. By bridging this gap, we ensure they are not left behind in an increasingly technology-driven world.',
-    outcome: 'Participants gain essential digital competencies, enabling them to pursue higher education or enter the workforce with confidence.',
-  },
-  {
-    id: 'philosophy',
-    title: 'Philosophy & Critical Thinking',
-    icon: HiLightBulb,
-    accentBg: 'bg-brand-red',
-    accentText: 'text-white',
-    accentHighlight: 'text-brand-teal-light',
-    overview: 'In a fast-paced world, individuals rarely get the opportunity to reflect on the deeper aspects of life. This program introduces participants to philosophical thinking and analytical reasoning.',
-    whatWeDo: [
-      'Exploration of fundamental questions about life, existence, and purpose',
-      'Discussions based on scientific and philosophical content',
-      'Critical thinking exercises',
-      'Group debates and reflective sessions',
-    ],
-    whyItMatters: 'Modern life often pushes individuals into a cycle of competition without reflection. This program helps participants develop clarity of thought, self-awareness, and the ability to make informed decisions.',
-    outcome: 'Participants develop independent thinking skills, intellectual curiosity, and a deeper understanding of life.',
-  },
-  {
-    id: 'values',
-    title: 'Value Education',
-    icon: HiHeart,
-    accentBg: 'bg-brand-teal',
-    accentText: 'text-white',
-    accentHighlight: 'text-brand-teal-light',
-    overview: 'A strong society is built on strong values. This program focuses on instilling essential human values in young individuals at an early stage of life.',
-    whatWeDo: [
-      'Interactive sessions with teenagers',
-      'Teaching empathy, respect, and responsibility',
-      'Activities that promote ethical thinking',
-      'Real-life examples and guided discussions',
-    ],
-    whyItMatters: 'In today\'s competitive world, core human values are often overlooked, leading to self-centered attitudes. This program nurtures responsible individuals who contribute positively to society.',
-    outcome: 'Participants grow into compassionate, ethical, and socially responsible individuals.',
-  },
-  {
-    id: 'online',
-    title: 'Interactive Online English',
-    icon: HiGlobeAlt,
-    accentBg: 'bg-brand-red',
-    accentText: 'text-white',
-    accentHighlight: 'text-brand-teal-light',
-    overview: 'This program connects students with global volunteers to practice spoken English through live, interactive sessions.',
-    whatWeDo: [
-      'Weekly online sessions (1 to 1.5 hours)',
-      'Conversations with international volunteers',
-      'Real-world speaking practice',
-      'Flexible participation via Google Meet',
-    ],
-    keyFeatures: [
-      'Global exposure to English-speaking environments',
-      'Volunteers can choose video/audio participation',
-      'Designed to overcome lack of real-world language exposure',
-    ],
-    whyItMatters: 'Students in underserved communities often lack opportunities to practice English in real-life contexts. This initiative bridges that gap by creating a global learning environment.',
-    outcome: 'Students gain confidence in spoken English, improve fluency, and develop global communication skills.',
-  },
-];
-
-function ProgramCard({ program, index }: { program: typeof programsData[0]; index: number }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function ProgramCard({ program, index, isExpanded, onToggle }: { program: typeof programsDetail[0]; index: number; isExpanded: boolean; onToggle: () => void }) {
   
   return (
     <AnimatedSection delay={index * 0.08}>
       <motion.div
-        className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden hover:border-white/35 transition-all duration-300"
+        id={program.id}
+        className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl overflow-hidden hover:border-white/35 transition-all duration-300 scroll-mt-24"
         initial={false}
         animate={isExpanded ? { scale: 1.01 } : { scale: 1 }}
       >
@@ -187,7 +87,7 @@ function ProgramCard({ program, index }: { program: typeof programsData[0]; inde
               </AnimatePresence>
               
               <button
-                onClick={() => setIsExpanded(!isExpanded)}
+                onClick={onToggle}
                 className="mt-4 flex items-center gap-2 text-sm font-semibold text-white hover:text-white/70 transition-all duration-200"
               >
                 <span>{isExpanded ? 'Show Less' : 'Read More'}</span>
@@ -208,6 +108,20 @@ function ProgramCard({ program, index }: { program: typeof programsData[0]; inde
 
 export default function ProgramsPage() {
   const t = useTranslations('programs_section');
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setExpandedId(hash);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   return (
     <>
@@ -234,8 +148,14 @@ export default function ProgramsPage() {
       <section className="section-padding bg-white/[0.08]">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto space-y-6">
-            {programsData.map((program, index) => (
-              <ProgramCard key={program.id} program={program} index={index} />
+            {programsDetail.map((program, index) => (
+              <ProgramCard 
+                key={program.id} 
+                program={program} 
+                index={index} 
+                isExpanded={expandedId === program.id}
+                onToggle={() => setExpandedId(expandedId === program.id ? null : program.id)}
+              />
             ))}
           </div>
         </div>
