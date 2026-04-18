@@ -5,7 +5,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion } from 'framer-motion';
-import { HiChevronLeft, HiChevronRight, HiRocketLaunch, HiLightBulb, HiCheckBadge } from 'react-icons/hi2';
+import { HiChevronLeft, HiChevronRight, HiRocketLaunch, HiLightBulb } from 'react-icons/hi2';
 import { getAboutImages, type MediaItem } from '@/lib/images';
 
 export default function AboutPreview() {
@@ -142,23 +142,6 @@ export default function AboutPreview() {
                     </div>
                   )}
                 </div>
-
-                {/* BBC Active badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.5 }}
-                  className="absolute -bottom-5 -left-5 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-3 shadow-md flex items-center gap-2.5"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-white/25 flex items-center justify-center flex-shrink-0">
-                    <HiCheckBadge className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-heading font-bold text-white text-sm">BBC Active</div>
-                    <p className="text-xs text-white/70">Licensed Educational Partner</p>
-                  </div>
-                </motion.div>
               </div>
             </AnimatedSection>
           )}
