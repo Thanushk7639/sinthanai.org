@@ -86,6 +86,7 @@ function ImageWithFallback({
       sizes={sizes}
       loading={loading}
       onError={() => setErrored(true)}
+      loader={({ src: s }) => s}
     />
   );
 }

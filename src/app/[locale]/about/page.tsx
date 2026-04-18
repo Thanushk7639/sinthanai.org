@@ -162,6 +162,7 @@ export default function AboutPage() {
                       fill
                       className="object-contain p-3"
                       sizes="(max-width: 1024px) 100vw, 50vw"
+                      loader={({ src }) => src}
                     />
                   </div>
                   {aboutImage2 && (
@@ -172,6 +173,7 @@ export default function AboutPage() {
                         fill
                         className="object-contain p-1"
                         sizes="180px"
+                        loader={({ src }) => src}
                       />
                     </div>
                   )}

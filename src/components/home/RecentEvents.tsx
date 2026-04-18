@@ -73,6 +73,7 @@ export default function RecentEvents() {
                           loading="lazy"
                           sizes="(max-width: 768px) 100vw, 33vw"
                           unoptimized
+                          loader={({ src }) => src}
                         />
                         <div className="absolute inset-0 bg-brand-ink/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         <div className="absolute top-3 left-3 bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl px-3 py-1.5 flex items-center gap-1.5">

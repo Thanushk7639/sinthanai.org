@@ -125,6 +125,7 @@ export default function ImageSlider() {
                 sizes="(max-width: 768px) 100vw, 90vw"
                 priority={currentIndex === 0}
                 unoptimized
+                loader={({ src }) => src}
               />
             </motion.div>
           </AnimatePresence>
